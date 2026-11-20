@@ -1,12 +1,13 @@
 interface ButtonProps {
     label: string,
+    disabled: boolean,
     type: 'button' | 'submit' | 'reset',
-onClick: () => void,
+    onClick: () => void,
 }
 
-function Button({label, type, onClick}: ButtonProps) {
+function Button({label, disabled, type, onClick}: ButtonProps) {
 return (
-<button type={ type } onClick={ onClick } >{ label }</button>
+<button type={ type } disabled={disabled} onClick={ onClick } >{ label }</button>
     )
 }
 
