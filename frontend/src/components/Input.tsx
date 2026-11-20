@@ -1,14 +1,19 @@
 interface InputProps {
     label: string,
-    field: string,
+    value: string,
     type: 'text' | 'email' | 'password',
+    onChange: (value: string) => void,
 }
 
-function Input({ label, field, type }: InputProps) {
+function Input({ label, value, type, onChange }: InputProps) {
+    function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
+    onChange(event.target.value);
+    }
+
     return (
         <div className="flex flex-col h-auto">
-            <label htmlFor={field} className="text-sm">{ label }</label>
-            <input id={field} name={field} type={type} placeholder={`Enter your ${label}`} className="border border-red-500 py-1" />
+            <label htmlFor={label} className="text-sm">{ label }</label>
+            <input id={label} name={label} type={type} placeholder={`Enter your ${label}`} value={value} onChange={handleChange} className="border border-red-500 py-1" />
         </div>
     )
 }
