@@ -13,7 +13,7 @@ function Login() {
                 <p>Welcome back! Enter your credentials below.</p>
                 <Input label="Email" value={email} onChange={setEmail} type="email" />
                 <Input label="Password" value={password} onChange={setPassword} type="password" />
-                <Button label="Submit" type="submit" />
+                <Button label="Login" type="submit" />
             </form>
         </div>
     )
