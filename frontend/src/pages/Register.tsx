@@ -11,6 +11,8 @@ function Register() {
 
     return (
         <div>
+            <h1>Register Today!</h1>
+            <p>Enter your credentials below.</p>
             <Input label="Email" value={email} type="email" onChange={setEmail} />
             <Input label="First Name" value={firstName} type="text" onChange={setFirstName} />
             <Input label="Last Name" value={lastName} type="text" onChange={setLastName} />
