@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
-interface Review {
+export interface ReviewData {
     reviewId: number;
     userId: number;
     classId: number;
@@ -26,26 +26,32 @@ interface Review {
     userReaction?: "LIKE" | "DISLIKE" | null;
 }
 
-const Review: React.FC = () => {
-    const [review, setReview] = useState<Review>({
-        reviewId: 1,
-        userId: 100,
-        classId: 1,
-        className: "Full Stack Web Development",
-        instructorName: "Dr. Sarah Chen",
-        rating: 3,
-        teacherScore: 5,
-        contentScore: 4,
-        pacingScore: 3,
-        reviewText:
-            "Excellent instructor. The assignments reinforced the material well.",
-        likes: 12,
-        dislikes: 1,
-        reviewerName: "John Doe",
-        createdAt: "2026-11-01",
-        modifiedAt: "2026-11-01",
-        userReaction: null,
-    });
+interface ReviewProps {
+    initialReview?: ReviewData;
+}
+
+const defaultReview: ReviewData = {
+    reviewId: 1,
+    userId: 100,
+    classId: 1,
+    className: "Full Stack Web Development",
+    instructorName: "Dr. Sarah Chen",
+    rating: 3,
+    teacherScore: 5,
+    contentScore: 4,
+    pacingScore: 3,
+    reviewText:
+        "Excellent instructor. The assignments reinforced the material well.",
+    likes: 12,
+    dislikes: 1,
+    reviewerName: "John Doe",
+    createdAt: "2026-11-01",
+    modifiedAt: "2026-11-01",
+    userReaction: null,
+};
+
+function Review({ initialReview = defaultReview }: ReviewProps) {
+    const [review, setReview] = useState<ReviewData>(initialReview);
 
     const handleLike = () => {
         setReview((current) => {
@@ -213,6 +219,6 @@ const Review: React.FC = () => {
             </article>
         </div>
     );
-};
+}
 
 export default Review;
